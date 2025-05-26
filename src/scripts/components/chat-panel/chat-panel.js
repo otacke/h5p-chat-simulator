@@ -24,6 +24,9 @@ export default class ChatPanel {
   constructor(params = {}, callbacks = {}) {
     this.params = Util.extend({ message: {} }, params);
 
+    this.params.message.text = Util.purifyHTML(this.params.message.text);
+    this.params.message.userName = Util.purifyHTML(this.params.message.userName);
+
     this.callbacks = Util.extend({
       onShowingProcessDone: () => {}
     }, callbacks);
