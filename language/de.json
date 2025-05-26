@@ -1,0 +1,148 @@
+{
+  "semantics": [
+    {
+      "label": "Nachrichten",
+      "description": "Dies ist eine Liste der Nachrichten, die im Chat angezeigt werden.",
+      "entity": "Nachricht",
+      "widgets": [
+        {
+          "label": "Standard"
+        }
+      ],
+      "field": {
+        "label": "Nachricht",
+        "fields": [
+          {
+            "label": "Nachrichtentext"
+          },
+          {
+            "label": "Angepasste Werte",
+            "fields": [
+              {
+                "label": "Nachrichtenherkunft",
+                "options": [
+                  {
+                    "label": "Automatisch (Gegenteil der vorherigen Nachricht)"
+                  },
+                  {
+                    "label": "Empfänger (linke Seite)"
+                  },
+                  {
+                    "label": "Absender (rechte Seite)"
+                  }
+                ]
+              },
+              {
+                "label": "Dummy",
+                "default": "Dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "Visuelles",
+      "fields": [
+        {
+          "label": "Linke Seite (Empfänger)",
+          "fields": [
+            {
+              "label": "Standard-Hintergrundfarbe",
+              "description": "Dies ist die Standard-Hintergrundfarbe für die linke Seite des Chats. Sie wird verwendet, wenn für eine Nachricht keine spezifische Hintergrundfarbe festgelegt ist."
+            },
+            {
+              "label": "Symbolbild",
+              "description": "Dieses Bild wird als Symbol für die linke Seite des Chats verwendet. Es sollte ein quadratisches Seitenverhältnis haben und muss nicht größer als 64x64 Pixel sein."
+            },
+            {
+              "label": "Benutzername",
+              "description": "Dies ist der Benutzername, der für die linke Seite des Chats angezeigt wird."
+            }
+          ]
+        },
+        {
+          "label": "Rechte Seite (Absender)",
+          "fields": [
+            {
+              "label": "Standard-Hintergrundfarbe",
+              "description": "Dies ist die Standard-Hintergrundfarbe für die rechte Seite des Chats. Sie wird verwendet, wenn für eine Nachricht keine spezifische Hintergrundfarbe festgelegt ist."
+            },
+            {
+              "label": "Symbolbild",
+              "description": "Dieses Bild wird als Symbol für die rechte Seite des Chats verwendet. Es sollte ein quadratisches Seitenverhältnis haben und muss nicht größer als 64x64 Pixel sein."
+            },
+            {
+              "label": "Benutzername",
+              "description": "Dies ist der Benutzername, der für die rechte Seite des Chats angezeigt wird."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Verhaltenseinstellungen",
+      "fields": [
+        {
+          "label": "Startverhalten",
+          "options": [
+            {
+              "label": "Startet, sobald sichtbar"
+            },
+            {
+              "label": "Startet beim Klick"
+            }
+          ]
+        },
+        {
+          "label": "Größe des Inhalts",
+          "options": [
+            {
+              "label": "Inhaltshöhe wächst mit Nachrichten"
+            },
+            {
+              "label": "Feste Inhaltshöhe"
+            }
+          ]
+        },
+        {
+          "label": "Maximale Höhe",
+          "description": "Maximale Inhaltshöhe in Pixel. Der Inhalt wächst bis zu dieser Höhe und fügt dann einen Scrollbalken hinzu. Auf 0 setzen für keine Höhenbegrenzung."
+        },
+        {
+          "label": "Feste Höhe",
+          "description": "Feste Inhaltshöhe in Pixel. Der Inhalt hat immer genau diese Höhe und verwendet bei Bedarf einen Scrollbalken."
+        }
+      ]
+    },
+    {
+      "label": "Bedienoberfläche",
+      "fields": [
+        {
+          "label": "Keine Nachrichten angegeben",
+          "description": "Text, der angezeigt wird, wenn keine Nachrichten angegeben wurden.",
+          "default": "Der Autor hat keine Nachrichten angegeben."
+        },
+        {
+          "label": "Kein Nachrichtentext angegeben",
+          "description": "Nachrichtentext, falls der Autor keinen angegeben hat.",
+          "default": "Kein Nachrichtentext angegeben"
+        }
+      ]
+    },
+    {
+      "label": "Texte für Barrierefreiheit",
+      "fields": [
+        {
+          "label": "Neue Nachricht",
+          "default": "Neue Nachricht"
+        },
+        {
+          "label": "Neue Nachricht von",
+          "description": "@username ist ein Platzhalter, der durch den tatsächlichen Benutzernamen des Absenders ersetzt wird, falls festgelegt.",
+          "default": "Neue Nachricht von @username"
+        }
+      ]
+    }
+  ]
+}

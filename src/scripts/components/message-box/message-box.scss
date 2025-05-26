@@ -1,0 +1,19 @@
+.message-box {
+  --color-hint-message-background: rgb(245, 232, 213);
+  --color-hint-message-border: rgb(238, 221, 85);
+  --color-hint-message-text: rgb(144, 84, 20);
+  --font-size: 0.8rem;
+
+
+  background-color: var(--color-hint-message-background);
+  border: 1px solid var(--color-hint-message-border);
+  box-sizing: border-box;
+  color: var(--color-hint-message-text);
+  font-size: var(--font-size);
+  padding: min(var(--font-size), 1rem);
+
+  .message-box-message {
+    margin: 0;
+    text-align: center;
+  }
+}

@@ -1,0 +1,261 @@
+[
+  {
+    "name": "messages",
+    "type": "list",
+    "label": "Messages",
+    "importance": "high",
+    "description": "This is a list of messages that will be displayed in the chat.",
+    "entity": "message",
+    "widgets": [
+      {
+        "name": "VerticalTabs",
+        "label": "Default"
+      }
+    ],
+    "field": {
+      "name": "messageGroup",
+      "type": "group",
+      "label": "Message",
+      "importance": "high",
+      "fields": [
+        {
+          "name": "text",
+          "type": "text",
+          "label": "Message text",
+          "optional": false
+        },
+        {
+          "name": "overrides",
+          "type": "group",
+          "label": "Overrides",
+          "importance": "low",
+          "fields": [
+            {
+              "name": "origin",
+              "type": "select",
+              "label": "Message origin",
+              "options": [
+                {
+                  "value": "auto",
+                  "label": "Automatic (opposite of previous message)"
+                },
+                {
+                  "value": "left",
+                  "label": "Receiver (left side)"
+                },
+                {
+                  "value": "right",
+                  "label": "Sender (right side)"
+                }
+              ],
+              "default": "auto"
+            },
+            {
+              "name": "dummy",
+              "type": "text",
+              "label": "Dummy",
+              "default": "Dummy",
+              "widget": "none"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "visuals",
+    "type": "group",
+    "importance": "low",
+    "label": "Visuals",
+    "fields": [
+      {
+        "name": "left",
+        "type": "group",
+        "importance": "low",
+        "label": "Left side (receiver)",
+        "fields": [
+          {
+            "name": "colorBackgroundDefault",
+            "type": "text",
+            "label": "Default background color",
+            "description": "This is the default background color for the left side of the chat. It will be used if no specific background color is set for a message.",
+            "optional": false,
+            "widget": "colorSelector",
+            "default": "rgb(230, 230, 230)",
+            "spectrum": {
+              "showInput": true,
+              "showInitial": true,
+              "preferredFormat": "rgb"
+            }
+          },
+          {
+            "name": "iconImage",
+            "type": "image",
+            "label": "Icon image",
+            "optional": true,
+            "description": "This image will be used as icon for the left side of the chat. It should have a square aspect ratio and needn't exceed 64x64 pixels."
+          },
+          {
+            "name": "userName",
+            "type": "text",
+            "label": "User name",
+            "description": "This is the user name that will be displayed for the left side of the chat.",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "right",
+        "type": "group",
+        "importance": "low",
+        "label": "Right side (sender)",
+        "fields": [
+          {
+            "name": "colorBackgroundDefault",
+            "type": "text",
+            "label": "Default background color",
+            "description": "This is the default background color for the right side of the chat. It will be used if no specific background color is set for a message.",
+            "optional": false,
+            "widget": "colorSelector",
+            "default": "rgb(26, 115, 217)",
+            "spectrum": {
+              "showInput": true,
+              "showInitial": true,
+              "preferredFormat": "rgb"
+            }
+          },
+          {
+            "name": "iconImage",
+            "type": "image",
+            "label": "Icon image",
+            "optional": true,
+            "description": "This image will be used as icon for the right side of the chat. It should have a square aspect ratio and needn't exceed 64x64 pixels."
+          },
+          {
+            "name": "userName",
+            "type": "text",
+            "label": "User name",
+            "description": "This is the user name that will be displayed for the right side of the chat.",
+            "optional": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "behaviour",
+    "type": "group",
+    "importance": "low",
+    "label": "Behavioural settings",
+    "fields": [
+      {
+        "name": "startBehavior",
+        "type": "select",
+        "label": "Start behavior",
+        "options": [
+          {
+            "value": "onceVisible",
+            "label": "Start once visible"
+          },
+          {
+            "value": "click",
+            "label": "Start on click"
+          }
+        ],
+        "default": "onceVisible",
+        "widget": "none"
+      },
+      {
+        "name": "sizing",
+        "type": "select",
+        "label": "Content sizing",
+        "options": [
+          {
+            "value": "grow",
+            "label": "Grow content height with messages"
+          },
+          {
+            "value": "fix",
+            "label": "Fix content height"
+          }
+        ],
+        "default": "grow"
+      },
+            {
+        "name": "maxHeight",
+        "type": "text",
+        "label": "Maximum height",
+        "description": "Maximum content height in pixels. Content will grow up to this height and then add a scrollbar. Set to 0 for no height limit.",
+        "default": "0",
+        "widget": "showWhen",
+        "showWhen": {
+          "rules": [
+            {
+              "field": "sizing",
+              "equals": "grow"
+            }
+          ]
+        }
+      },
+      {
+        "name": "fixedHeight",
+        "type": "text",
+        "label": "Fixed height",
+        "description": "Fixed content height in pixels. Content will always be this height exactly ans use a scrollbar if required.",
+        "default": "480",
+        "widget": "showWhen",
+        "showWhen": {
+          "rules": [
+            {
+              "field": "sizing",
+              "equals": "fix"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "l10n",
+    "type": "group",
+    "label": "User interface",
+    "common": true,
+    "fields": [
+      {
+        "name": "noMessages",
+        "type": "text",
+        "label": "No messages supplied",
+        "description": "Text to be shown if no messages were supplied by the author.",
+        "default": "The author did not supply any messages."
+      },
+      {
+        "name": "emptyMessage",
+        "type": "text",
+        "label": "No message text supplied",
+        "description": "Message text if author did not supply any.",
+        "default": "No message text supplied"
+      }
+    ]
+  },
+  {
+    "name": "a11y",
+    "type": "group",
+    "label": "Accessibility texts",
+    "common": true,
+    "fields": [
+      {
+        "name": "newMessage",
+        "type": "text",
+        "label": "New message",
+        "default": "New message"
+      },
+      {
+        "name": "newMessageFrom",
+        "type": "text",
+        "label": "New message from",
+        "description": "@username is a placeholder that will be replaced with the actual user name of the sender if set.",
+        "default": "New message from @username"
+      }
+    ]
+  }
+]

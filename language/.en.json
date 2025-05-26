@@ -1,0 +1,148 @@
+{
+  "semantics": [
+    {
+      "label": "Messages",
+      "description": "This is a list of messages that will be displayed in the chat.",
+      "entity": "message",
+      "widgets": [
+        {
+          "label": "Default"
+        }
+      ],
+      "field": {
+        "label": "Message",
+        "fields": [
+          {
+            "label": "Message text"
+          },
+          {
+            "label": "Overrides",
+            "fields": [
+              {
+                "label": "Message origin",
+                "options": [
+                  {
+                    "label": "Automatic (opposite of previous message)"
+                  },
+                  {
+                    "label": "Receiver (left side)"
+                  },
+                  {
+                    "label": "Sender (right side)"
+                  }
+                ]
+              },
+              {
+                "label": "Dummy",
+                "default": "Dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "Visuals",
+      "fields": [
+        {
+          "label": "Left side (receiver)",
+          "fields": [
+            {
+              "label": "Default background color",
+              "description": "This is the default background color for the left side of the chat. It will be used if no specific background color is set for a message."
+            },
+            {
+              "label": "Icon image",
+              "description": "This image will be used as icon for the left side of the chat. It should have a square aspect ratio and needn't exceed 64x64 pixels."
+            },
+            {
+              "label": "User name",
+              "description": "This is the user name that will be displayed for the left side of the chat."
+            }
+          ]
+        },
+        {
+          "label": "Right side (sender)",
+          "fields": [
+            {
+              "label": "Default background color",
+              "description": "This is the default background color for the right side of the chat. It will be used if no specific background color is set for a message."
+            },
+            {
+              "label": "Icon image",
+              "description": "This image will be used as icon for the right side of the chat. It should have a square aspect ratio and needn't exceed 64x64 pixels."
+            },
+            {
+              "label": "User name",
+              "description": "This is the user name that will be displayed for the right side of the chat."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Behavioural settings",
+      "fields": [
+        {
+          "label": "Start behavior",
+          "options": [
+            {
+              "label": "Start once visible"
+            },
+            {
+              "label": "Start on click"
+            }
+          ]
+        },
+        {
+          "label": "Content sizing",
+          "options": [
+            {
+              "label": "Grow content height with messages"
+            },
+            {
+              "label": "Fix content height"
+            }
+          ]
+        },
+        {
+          "label": "Maximum height",
+          "description": "Maximum content height in pixels. Content will grow up to this height and then add a scrollbar. Set to 0 for no height limit."
+        },
+        {
+          "label": "Fixed height",
+          "description": "Fixed content height in pixels. Content will always be this height exactly ans use a scrollbar if required."
+        }
+      ]
+    },
+    {
+      "label": "User interface",
+      "fields": [
+        {
+          "label": "No messages supplied",
+          "description": "Text to be shown if no messages were supplied by the author.",
+          "default": "The author did not supply any messages."
+        },
+        {
+          "label": "No message text supplied",
+          "description": "Message text if author did not supply any.",
+          "default": "No message text supplied"
+        }
+      ]
+    },
+    {
+      "label": "Accessibility texts",
+      "fields": [
+        {
+          "label": "New message",
+          "default": "New message"
+        },
+        {
+          "label": "New message from",
+          "description": "@username is a placeholder that will be replaced with the actual user name of the sender if set.",
+          "default": "New message from @username"
+        }
+      ]
+    }
+  ]
+}

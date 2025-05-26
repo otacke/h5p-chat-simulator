@@ -1,0 +1,30 @@
+@use "@styles/colors.css";
+@use "@styles/icons.css";
+
+html {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+// These are nice to have, but can cause trouble in the H5P editor
+// *:before, *:after {
+//   box-sizing: inherit;
+// }
+
+.h5p-chat-simulator {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  height: var(--fixed-height);
+  max-height: var(--max-height);
+
+  &.h5p-standalone {
+    padding: 1rem;
+  }
+}
+
+html.h5p-iframe .h5p-container.h5p-chat-simulator.overflow {
+  overflow-y: auto;
+}

@@ -1,0 +1,31 @@
+.h5p-chat-simulator {
+  /* Common colors */
+  --color-background: #fff;
+  --color-text: #4c4452;
+  --color-text-dark: var(--color-text);
+  --color-text-light: #fff;
+
+  /* Disabled color, e.g. for buttons */
+  --color-disabled: rgb(128 128 128 / 95%);
+
+  /* Primary color with common gradients */
+  --color-primary: rgb(26, 115, 217);
+  --color-primary-5: rgb(26 115 217 / 5%);
+  --color-primary-10: rgb(26 115 217 / 10%);
+  --color-primary-15: rgb(26 115 217 / 15%);
+  --color-primary-30: rgb(26 115 217 / 30%);
+  --color-primary-50: rgb(26 115 217 / 50%);
+  --color-primary-70: rgb(26 115 217 / 70%);
+  --color-primary-90: rgb(26 115 217 / 90%);
+  --color-primary-95: rgb(26 115 217 / 95%);
+
+  /* Commonly used by H5P Group */
+  --color-joubelui-button: #1a73d9;
+  --color-joubelui-button-hover: #1356a3;
+  --color-joubelui-button-active: #104888;
+
+  --color-gray-25: rgb(64, 64, 64);
+  --color-gray-50: rgb(128, 128, 128);
+  --color-gray-75: rgb(192, 192, 192);
+  --color-gray-90: rgb(230, 230, 230);
+}
