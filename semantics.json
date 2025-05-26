@@ -22,6 +22,7 @@
           "name": "text",
           "type": "text",
           "label": "Message text",
+          "maxLength": 2500,
           "optional": false
         },
         {
