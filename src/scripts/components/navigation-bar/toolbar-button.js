@@ -103,7 +103,8 @@ export default class ToolbarButton {
       );
     });
 
-    H5P.Tooltip(this.button, { position: DEFAULT_TOOLTIP_POSITION });
+    // TODO: Use once H5P Group has updated their H5P integrations. Too much trouble otherwise.
+    // H5P.Tooltip(this.button, { position: DEFAULT_TOOLTIP_POSITION });
   }
 
   /**
