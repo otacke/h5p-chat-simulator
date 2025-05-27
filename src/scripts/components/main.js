@@ -1,9 +1,7 @@
-import ChatPanel from '@components/chat-panel/chat-panel.js';
+import ChatPanels from '@components/chat-panels/chat-panels.js';
+import NavigationBar from '@components/navigation-bar/navigation-bar.js';
 import Util from '@services/util.js';
 import './main.scss';
-
-/** @constant {number} DELAY_BETWEEN_CHAT_PANELS_MS Delay between showing chat panels. */
-const DELAY_BETWEEN_CHAT_PANELS_MS = 500;
 
 /**
  * Main DOM component
@@ -12,38 +10,98 @@ export default class Main {
   /**
    * @class
    * @param {object} [params] Parameters.
-   * @param {object} [callbacks] Callbacks for events.
    */
-  constructor(params = {}, callbacks = {}) {
-    this.params = Util.extend({ messages: [] }, params);
-    this.callbacks = Util.extend({ scrollToBottom: () => {} }, callbacks);
+  constructor(params = {}) {
+    this.params = Util.extend({
+      behavior: {},
+      messages: []
+    }, params);
 
-    this.chatPanels = this.params.messages.map((message, index) => this.buildChatPanel(message, index));
+    this.instantiateChatPanels();
+    this.instantiateNavigationBar();
 
     this.dom = this.buildDOM();
 
-    this.start();
+    if (this.params.behavior.startBehavior === 'onceVisible') {
+      this.toggleAutoplay();
+    }
   }
 
   /**
-   * Build a chat panel.
-   * @param {object} message Message object.
-   * @param {number} index Index of the message.
-   * @returns {ChatPanel} The chat panel instance.
+   * Instantiate chat panels based on the messages provided in params.
    */
-  buildChatPanel(message, index) {
-    return new ChatPanel(
+  instantiateChatPanels() {
+    this.chatPanels = new ChatPanels(
       {
-        message: message,
+        messages: this.params.messages,
+        behavior: this.params.behavior,
         dictionary: this.params.dictionary,
         globals: this.params.globals
       },
       {
-        onShowingProcessDone: () => {
-          this.handleChatPanelShowingProcessDone(index);
+        onEnded: () => {
+          this.navigationBar.disableButton('forward-step');
+          this.navigationBar.toggleButtonState('autoplay', false);
+          this.navigationBar.disableButton('autoplay');
         }
       }
     );
+  }
+
+  /**
+   * Instantiate the navigation bar with buttons for controlling the chat simulator.
+   */
+  instantiateNavigationBar() {
+    const navigationBarButtons = [
+      {
+        id: 'forward-step',
+        type: 'pulse',
+        pulseStates: [
+          {
+            id: 'step',
+            label: this.params.dictionary.get('a11y.stepButtonLabel'),
+          }
+        ],
+        a11y: {
+          disabled: this.params.dictionary.get('a11y.stepButtonDisabled')
+        },
+        onClick: () => {
+          this.chatPanels.step();
+        }
+      },
+      {
+        id: 'autoplay',
+        active: this.params.behavior.startBehavior === 'onceVisible',
+        type: 'toggle',
+        a11y: {
+          active: this.params.dictionary.get('a11y.autoplayButtonActive'),
+          inactive: this.params.dictionary.get('a11y.autoplayButtonInactive'),
+          disabled: this.params.dictionary.get('a11y.autoplayButtonDisabled')
+        },
+        onClick: () => {
+          this.toggleAutoplay();
+        }
+      },
+      {
+        id: 'reset',
+        type: 'pulse',
+        pulseStates: [
+          {
+            id: 'reset',
+            label: this.params.dictionary.get('a11y.resetButtonLabel'),
+          }
+        ],
+        onClick: () => {
+          this.reset();
+        }
+      }
+    ];
+
+    this.navigationBar = new NavigationBar({
+      buttons: navigationBarButtons,
+      dictionary: this.params.dictionary,
+      hide: !this.params.behavior.showPlayerBar
+    });
   }
 
   /**
@@ -54,13 +112,8 @@ export default class Main {
     const dom = document.createElement('div');
     dom.classList.add('h5p-chat-simulator-main');
 
-    const panels = document.createElement('ul');
-    panels.classList.add('h5p-chat-simulator-chat-panels');
-    dom.appendChild(panels);
-
-    this.chatPanels.forEach((chatPanel) => {
-      panels.appendChild(chatPanel.getDOM());
-    });
+    dom.append(this.chatPanels.getDOM());
+    dom.append(this.navigationBar.getDOM());
 
     return dom;
   }
@@ -74,56 +127,24 @@ export default class Main {
   }
 
   /**
-   * Start the chat simulator by showing the first chat panel once in viewport.
+   * Toggle autoplaying chat panels.
    */
-  start() {
-    Util.callOnceVisible(this.dom, () => {
-      this.showChatPanel(0, 0);
-    });
-  }
-
-  /**
-   * Show a chat panel with a delay.
-   * @param {number} index Index of the chat panel to show.
-   * @param {number} [delay] Delay before showing the chat panel, defaults to DELAY_BETWEEN_CHAT_PANELS_MS.
-   */
-  showChatPanel(index, delay = DELAY_BETWEEN_CHAT_PANELS_MS) {
-    if (index < 0 || index >= this.chatPanels.length) {
-      return;
-    }
-
-    window.clearTimeout(this.showChatPanelTimeout);
-    this.showChatPanelTimeout = window.setTimeout(() => {
-      this.chatPanels[index].showWithAnimation();
-      this.callbacks.scrollToBottom();
-    }, delay);
-  }
-
-  /**
-   * Handle the completion of the chat panel showing process.
-   * @param {number} index Index of the chat panel that finished showing.
-   */
-  handleChatPanelShowingProcessDone(index) {
-    this.callbacks.scrollToBottom();
-
-    const nextIndex = index + 1;
-    if (nextIndex >= this.chatPanels.length) {
-      return;
-    }
-
-    this.showChatPanel(nextIndex);
+  toggleAutoplay() {
+    this.chatPanels.toggleAutoplay();
   }
 
   /**
    * Reset the chat panels.
    */
   reset() {
-    window.clearTimeout(this.showChatPanelTimeout);
+    this.chatPanels.reset();
 
-    this.chatPanels.forEach((chatPanel) => {
-      chatPanel.reset();
-    });
+    this.navigationBar.enableButton('forward-step');
+    this.navigationBar.enableButton('autoplay');
+    this.navigationBar.reset();
 
-    this.start();
+    if (this.params.behavior.startBehavior === 'onceVisible') {
+      this.toggleAutoplay();
+    }
   }
 }

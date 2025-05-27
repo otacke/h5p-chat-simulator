@@ -48,18 +48,14 @@ export default class ChatSimulator extends H5P.EventDispatcher {
     this.main = new Main(
       {
         messages: this.params.messages,
+        behavior: this.params.behaviour,
         dictionary: this.dictionary,
         globals: this.globals
-      },
-      {
-        scrollToBottom: () => {
-          window.requestAnimationFrame(() => {
-            this.wrapper.scrollTop = this.wrapper.scrollHeight;
-          });
-        }
       }
     );
   }
+
+  // TODO: play button only
 
   /**
    * Sanitize parameters.
@@ -78,6 +74,10 @@ export default class ChatSimulator extends H5P.EventDispatcher {
     }
     if (params.behaviour.maxHeight === '0') {
       delete params.behaviour.maxHeight;
+    }
+
+    if (params.behaviour.startBehavior === 'manually') {
+      params.behaviour.showNavigationBar = true;
     }
 
     params.messages = params.messages
@@ -172,22 +172,6 @@ export default class ChatSimulator extends H5P.EventDispatcher {
   }
 
   /**
-   * Append main component to DOM.
-   * @param {HTMLElement} wrapper Element to append the main component to.
-   */
-  appendMain(wrapper) {
-    if (this.params.behaviour.fixedHeight) {
-      wrapper.style.setProperty('--fixed-height', `${this.params.behaviour.fixedHeight}px`);
-    }
-    if (this.params.behaviour.maxHeight) {
-      wrapper.style.setProperty('--max-height', `${this.params.behaviour.maxHeight}px`);
-      wrapper.classList.add('overflow');
-    }
-
-    wrapper.append(this.main.getDOM());
-  }
-
-  /**
    * Attach library to wrapper.
    * @param {H5P.jQuery} $wrapper Content's container.
    */
@@ -204,7 +188,7 @@ export default class ChatSimulator extends H5P.EventDispatcher {
       return;
     }
 
-    this.appendMain(this.wrapper);
+    this.wrapper.append(this.main.getDOM());
   }
 
   /**

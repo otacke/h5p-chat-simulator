@@ -1,0 +1,13 @@
+  .h5p-chat-simulator-chat-panels {
+    height: var(--fixed-height);
+    list-style: none;
+    margin: 0;
+    max-height: var(--max-height);
+    overflow-y: auto;
+    padding: 0;
+
+    &.has-max-height {
+      padding-right: 0.5rem;
+      scrollbar-gutter: stable;
+    }
+  }

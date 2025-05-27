@@ -6,7 +6,7 @@
   --color-text-light: #fff;
 
   /* Disabled color, e.g. for buttons */
-  --color-disabled: rgb(128 128 128 / 95%);
+  --color-disabled: rgb(128 128 128 / 50%);
 
   /* Primary color with common gradients */
   --color-primary: rgb(26, 115, 217);
@@ -28,4 +28,6 @@
   --color-gray-50: rgb(128, 128, 128);
   --color-gray-75: rgb(192, 192, 192);
   --color-gray-90: rgb(230, 230, 230);
+
+  --color-shadow-light: rgba(166, 166, 166, 0.2);
 }

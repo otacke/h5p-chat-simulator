@@ -1,3 +1,7 @@
 .h5p-chat-simulator {
+  --icon-fontawesome-forward: "\f04e";
+  --icon-fontawesome-forward-step: "\f051";
+  --icon-fontawesome-pause: "\f04c";
+  --icon-fontawesome-arrow-rotate-right: "\f01e";
   --icon-fontawesome-user: "\f007";
 }

@@ -94,7 +94,7 @@
             "type": "image",
             "label": "Icon image",
             "optional": true,
-            "description": "This image will be used as icon for the left side of the chat. It should have a square aspect ratio and needn't exceed 64x64 pixels."
+            "description": "This image will be used as icon for the left side of the chat. It should have a square aspect ratio and does not need to exceed 64x64 pixels."
           },
           {
             "name": "userName",
@@ -156,15 +156,30 @@
         "options": [
           {
             "value": "onceVisible",
-            "label": "Start once visible"
+            "label": "Start automatically once visible"
           },
           {
-            "value": "click",
-            "label": "Start on click"
+            "value": "manually",
+            "label": "Start manually"
           }
         ],
-        "default": "onceVisible",
-        "widget": "none"
+        "default": "onceVisible"
+      },
+      {
+        "name": "showPlayerBar",
+        "type": "boolean",
+        "label": "Show player bar",
+        "description": "If enabled, a player bar will be shown at the bottom of the chat to allow the user to control the chat. It makes sense to set a maximum/fixed height for the chat if the player bar is enabled.",
+        "default": false,
+        "widget": "showWhen",
+        "showWhen": {
+          "rules": [
+            {
+              "field": "startBehavior",
+              "equals": "onceVisible"
+            }
+          ]
+        }
       },
       {
         "name": "sizing",
@@ -173,11 +188,11 @@
         "options": [
           {
             "value": "grow",
-            "label": "Grow content height with messages"
+            "label": "Grow chat height with messages"
           },
           {
             "value": "fix",
-            "label": "Fix content height"
+            "label": "Fix chat height"
           }
         ],
         "default": "grow"
@@ -186,7 +201,7 @@
         "name": "maxHeight",
         "type": "text",
         "label": "Maximum height",
-        "description": "Maximum content height in pixels. Content will grow up to this height and then add a scrollbar. Set to 0 for no height limit.",
+        "description": "Maximum chat height in pixels. Chat will grow up to this height and then add a scrollbar. Set to 0 for no height limit.",
         "default": "0",
         "widget": "showWhen",
         "showWhen": {
@@ -202,7 +217,7 @@
         "name": "fixedHeight",
         "type": "text",
         "label": "Fixed height",
-        "description": "Fixed content height in pixels. Content will always be this height exactly ans use a scrollbar if required.",
+        "description": "Fixed chat height in pixels. Chat will always use this height exactly and use a scrollbar if required.",
         "default": "480",
         "widget": "showWhen",
         "showWhen": {
@@ -256,6 +271,42 @@
         "label": "New message from",
         "description": "@username is a placeholder that will be replaced with the actual user name of the sender if set.",
         "default": "New message from @username"
+      },
+      {
+        "name": "stepButtonLabel",
+        "type": "text",
+        "label": "Next message",
+        "default": "Next message"
+      },
+      {
+        "name": "stepButtonDisabled",
+        "type": "text",
+        "label": "Next message button disabled",
+        "default": "Next message (disabled)"
+      },
+      {
+        "name": "autoplayButtonActive",
+        "type": "text",
+        "label": "Stop autoplay",
+        "default": "Stop autoplay"
+      },
+      {
+        "name": "autoplayButtonInactive",
+        "type": "text",
+        "label": "Start autoplay",
+        "default": "Start autoplay"
+      },
+      {
+        "name": "autoplayButtonDisabled",
+        "type": "text",
+        "label": "Autoplay disabled",
+        "default": "Autoplay (disabled)"
+      },
+      {
+        "name": "resetButtonLabel",
+        "type": "text",
+        "label": "Reset",
+        "default": "Reset"
       }
     ]
   }

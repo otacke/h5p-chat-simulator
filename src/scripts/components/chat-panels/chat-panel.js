@@ -203,4 +203,9 @@ export default class ChatPanel {
 
     this.hide();
   }
+
+  complete() {
+    window.clearTimeout(this.showWithTextTimeout);
+    this.showWithText(this.params.message.text);
+  }
 }

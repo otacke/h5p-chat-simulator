@@ -17,14 +17,8 @@ html {
 .h5p-chat-simulator {
   background-color: var(--color-background);
   color: var(--color-text);
-  height: var(--fixed-height);
-  max-height: var(--max-height);
 
   &.h5p-standalone {
     padding: 1rem;
   }
-}
-
-html.h5p-iframe .h5p-container.h5p-chat-simulator.overflow {
-  overflow-y: auto;
 }

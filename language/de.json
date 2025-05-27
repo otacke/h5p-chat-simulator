@@ -2,11 +2,11 @@
   "semantics": [
     {
       "label": "Nachrichten",
-      "description": "Dies ist eine Liste der Nachrichten, die im Chat angezeigt werden.",
+      "description": "Dies ist eine Liste von Nachrichten, die im Chat angezeigt werden.",
       "entity": "Nachricht",
       "widgets": [
         {
-          "label": "Standard"
+          "label": "Default"
         }
       ],
       "field": {
@@ -16,7 +16,7 @@
             "label": "Nachrichtentext"
           },
           {
-            "label": "Angepasste Werte",
+            "label": "Detailanpassungen",
             "fields": [
               {
                 "label": "Nachrichtenherkunft",
@@ -49,15 +49,15 @@
           "fields": [
             {
               "label": "Standard-Hintergrundfarbe",
-              "description": "Dies ist die Standard-Hintergrundfarbe für die linke Seite des Chats. Sie wird verwendet, wenn für eine Nachricht keine spezifische Hintergrundfarbe festgelegt ist."
+              "description": "Dies ist die Standard-Hintergrundfarbe für die linke Seite des Chats. Sie wird verwendet, wenn keine spezielle Hintergrundfarbe für eine Nachricht gesetzt ist."
             },
             {
               "label": "Symbolbild",
-              "description": "Dieses Bild wird als Symbol für die linke Seite des Chats verwendet. Es sollte ein quadratisches Seitenverhältnis haben und muss nicht größer als 64x64 Pixel sein."
+              "description": "Dieses Bild wird als Icon für die linke Seite des Chats verwendet. Es sollte quadratisch sein und muss nicht größer als 64x64 Pixel sein."
             },
             {
               "label": "Benutzername",
-              "description": "Dies ist der Benutzername, der für die linke Seite des Chats angezeigt wird."
+              "description": "Das ist der Benutzername, der für die linke Seite des Chats angezeigt wird."
             }
           ]
         },
@@ -66,15 +66,15 @@
           "fields": [
             {
               "label": "Standard-Hintergrundfarbe",
-              "description": "Dies ist die Standard-Hintergrundfarbe für die rechte Seite des Chats. Sie wird verwendet, wenn für eine Nachricht keine spezifische Hintergrundfarbe festgelegt ist."
+              "description": "Dies ist die Standard-Hintergrundfarbe für die rechte Seite des Chats. Sie wird verwendet, wenn keine spezielle Hintergrundfarbe für eine Nachricht gesetzt ist."
             },
             {
               "label": "Symbolbild",
-              "description": "Dieses Bild wird als Symbol für die rechte Seite des Chats verwendet. Es sollte ein quadratisches Seitenverhältnis haben und muss nicht größer als 64x64 Pixel sein."
+              "description": "Dieses Bild wird als Icon für die rechte Seite des Chats verwendet. Es sollte quadratisch sein und muss nicht größer als 64x64 Pixel sein."
             },
             {
               "label": "Benutzername",
-              "description": "Dies ist der Benutzername, der für die rechte Seite des Chats angezeigt wird."
+              "description": "Das ist der Benutzername, der für die rechte Seite des Chats angezeigt wird."
             }
           ]
         }
@@ -87,31 +87,35 @@
           "label": "Startverhalten",
           "options": [
             {
-              "label": "Startet, sobald sichtbar"
+              "label": "Automatisch starten, sobald sichtbar"
             },
             {
-              "label": "Startet beim Klick"
+              "label": "Manuell starten"
             }
           ]
+        },
+        {
+          "label": "Playerleiste anzeigen",
+          "description": "Wenn aktiviert, wird unten im Chat eine Playerleiste angezeigt, mit der die Nutzenden den Chat steuern können. Es empfiehlt sich, eine maximale oder feste Höhe für den Chat zu setzen, wenn die Playerleiste aktiviert ist."
         },
         {
           "label": "Größe des Inhalts",
           "options": [
             {
-              "label": "Inhaltshöhe wächst mit Nachrichten"
+              "label": "Chat-Höhe wächst mit Nachrichten"
             },
             {
-              "label": "Feste Inhaltshöhe"
+              "label": "Chat-Höhe fest einstellen"
             }
           ]
         },
         {
           "label": "Maximale Höhe",
-          "description": "Maximale Inhaltshöhe in Pixel. Der Inhalt wächst bis zu dieser Höhe und fügt dann einen Scrollbalken hinzu. Auf 0 setzen für keine Höhenbegrenzung."
+          "description": "Maximale Chat-Höhe in Pixel. Der Chat wächst bis zu dieser Höhe und zeigt dann einen Scrollbalken an. 0 bedeutet keine Begrenzung."
         },
         {
           "label": "Feste Höhe",
-          "description": "Feste Inhaltshöhe in Pixel. Der Inhalt hat immer genau diese Höhe und verwendet bei Bedarf einen Scrollbalken."
+          "description": "Feste Chat-Höhe in Pixel. Der Chat verwendet immer genau diese Höhe und zeigt bei Bedarf einen Scrollbalken an."
         }
       ]
     },
@@ -119,14 +123,14 @@
       "label": "Bedienoberfläche",
       "fields": [
         {
-          "label": "Keine Nachrichten angegeben",
-          "description": "Text, der angezeigt wird, wenn keine Nachrichten angegeben wurden.",
-          "default": "Der Autor hat keine Nachrichten angegeben."
+          "label": "Keine Nachrichten vorhanden",
+          "description": "Text, der angezeigt wird, wenn vom Autor/von der Autorin keine Nachrichten bereitgestellt wurden.",
+          "default": "Der Autor hat keine Nachrichten bereitgestellt."
         },
         {
-          "label": "Kein Nachrichtentext angegeben",
-          "description": "Nachrichtentext, falls der Autor keinen angegeben hat.",
-          "default": "Kein Nachrichtentext angegeben"
+          "label": "Kein Nachrichtentext vorhanden",
+          "description": "Nachrichtentext, falls vom Autor/von der Autorin keiner angegeben wurde.",
+          "default": "Kein Nachrichtentext vorhanden"
         }
       ]
     },
@@ -139,8 +143,32 @@
         },
         {
           "label": "Neue Nachricht von",
-          "description": "@username ist ein Platzhalter, der durch den tatsächlichen Benutzernamen des Absenders ersetzt wird, falls festgelegt.",
+          "description": "@username ist ein Platzhalter, der durch den tatsächlichen Benutzernamen des Absenders ersetzt wird, falls gesetzt.",
           "default": "Neue Nachricht von @username"
+        },
+        {
+          "label": "Nächste Nachricht",
+          "default": "Nächste Nachricht"
+        },
+        {
+          "label": "Nächste Nachricht deaktiviert",
+          "default": "Nächste Nachricht (deaktiviert)"
+        },
+        {
+          "label": "Autoplay stoppen",
+          "default": "Autoplay stoppen"
+        },
+        {
+          "label": "Autoplay starten",
+          "default": "Autoplay starten"
+        },
+        {
+          "label": "Autoplay deaktiviert",
+          "default": "Autoplay (deaktiviert)"
+        },
+        {
+          "label": "Zurücksetzen",
+          "default": "Zurücksetzen"
         }
       ]
     }
