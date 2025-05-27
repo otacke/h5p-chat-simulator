@@ -238,6 +238,13 @@
     "common": true,
     "fields": [
       {
+        "name": "noChatMessages",
+        "type": "text",
+        "label": "No messages",
+        "description": "Text to be shown if the chat has not been started yet.",
+        "default": "No messages"
+      },
+      {
         "name": "noMessages",
         "type": "text",
         "label": "No messages supplied",

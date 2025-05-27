@@ -10,4 +10,13 @@
       padding-right: 0.5rem;
       scrollbar-gutter: stable;
     }
+
+    .h5p-chat-simulator-chat-panel-dummy {
+      text-align: center;
+      font-style: italic;
+
+      &.display-none {
+        display: none;
+      }
+    }
   }

@@ -30,6 +30,10 @@ export default class ChatPanels {
    * Instantiate chat panels based on the messages provided in params.
    */
   instantiateChatPanels() {
+    this.dummyMessage = document.createElement('li');
+    this.dummyMessage.classList.add('h5p-chat-simulator-chat-panel-dummy');
+    this.dummyMessage.innerText = this.params.dictionary.get('l10n.noChatMessages');
+
     this.chatPanels = this.params.messages.map((message, index) => this.buildChatPanel(message, index));
   }
 
@@ -93,6 +97,7 @@ export default class ChatPanels {
       return;
     }
 
+    this.dummyMessage.classList.toggle('display-none', true);
     window.clearTimeout(this.showChatPanelTimeout);
     this.showChatPanelTimeout = window.setTimeout(() => {
       this.lastChatPanelIndex = index;
@@ -117,6 +122,8 @@ export default class ChatPanels {
     if (this.params.behavior.fixedHeight) {
       dom.style.setProperty('--fixed-height', `${this.params.behavior.fixedHeight}px`);
     }
+
+    dom.append(this.dummyMessage);
 
     this.chatPanels.forEach((chatPanel) => {
       dom.append(chatPanel.getDOM());
@@ -186,5 +193,7 @@ export default class ChatPanels {
     this.chatPanels.forEach((chatPanel) => {
       chatPanel.reset();
     });
+
+    this.dummyMessage.classList.toggle('display-none', false);
   }
 }

@@ -123,6 +123,11 @@
       "label": "Bedienoberfläche",
       "fields": [
         {
+          "label": "Keine Nachrichten",
+          "description": "Text, der angezeigt wird, bevor der Chat gestartet wurde.",
+          "default": "Keine Nachrichten"
+        },
+        {
           "label": "Keine Nachrichten vorhanden",
           "description": "Text, der angezeigt wird, wenn vom Autor/von der Autorin keine Nachrichten bereitgestellt wurden.",
           "default": "Der Autor hat keine Nachrichten bereitgestellt."
