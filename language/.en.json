@@ -123,6 +123,11 @@
       "label": "User interface",
       "fields": [
         {
+          "label": "No messages",
+          "description": "Text to be shown if the chat has not been started yet.",
+          "default": "No messages"
+        },
+        {
           "label": "No messages supplied",
           "description": "Text to be shown if no messages were supplied by the author.",
           "default": "The author did not supply any messages."
