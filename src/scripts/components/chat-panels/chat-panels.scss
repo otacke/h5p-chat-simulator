@@ -3,10 +3,11 @@
     list-style: none;
     margin: 0;
     max-height: var(--max-height);
-    overflow-y: auto;
+    overflow: hidden;
     padding: 0;
 
-    &.has-max-height {
+    &.could-have-scrollbar {
+      overflow-y: auto;
       padding-right: 0.5rem;
       scrollbar-gutter: stable;
     }

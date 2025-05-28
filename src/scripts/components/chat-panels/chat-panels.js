@@ -116,11 +116,12 @@ export default class ChatPanels {
 
     if (this.params.behavior.maxHeight) {
       dom.style.setProperty('--max-height', `${this.params.behavior.maxHeight}px`);
-      dom.classList.add('has-max-height');
+      dom.classList.add('could-have-scrollbar');
     }
 
     if (this.params.behavior.fixedHeight) {
       dom.style.setProperty('--fixed-height', `${this.params.behavior.fixedHeight}px`);
+      dom.classList.add('could-have-scrollbar');
     }
 
     dom.append(this.dummyMessage);
