@@ -15,7 +15,7 @@ export default class ChatPanels {
   constructor(params = {}, callbacks = {}) {
     this.params = params;
     this.callbacks = Util.extend({
-      onEnded: () => {}
+      onEnded: () => {},
     }, callbacks);
 
     this.lastChatPanelIndex = -1;
@@ -48,13 +48,13 @@ export default class ChatPanels {
       {
         message: message,
         dictionary: this.params.dictionary,
-        globals: this.params.globals
+        globals: this.params.globals,
       },
       {
         onShowingProcessDone: () => {
           this.handleChatPanelShowingProcessDone(index);
-        }
-      }
+        },
+      },
     );
   }
 

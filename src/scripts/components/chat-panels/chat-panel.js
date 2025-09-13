@@ -28,7 +28,7 @@ export default class ChatPanel {
     this.params.message.userName = Util.purifyHTML(this.params.message.userName);
 
     this.callbacks = Util.extend({
-      onShowingProcessDone: () => {}
+      onShowingProcessDone: () => {},
     }, callbacks);
 
     this.dom = this.buildDOM();

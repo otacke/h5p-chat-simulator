@@ -14,7 +14,7 @@ export default class Main {
   constructor(params = {}) {
     this.params = Util.extend({
       behavior: {},
-      messages: []
+      messages: [],
     }, params);
 
     this.instantiateChatPanels();
@@ -36,15 +36,15 @@ export default class Main {
         messages: this.params.messages,
         behavior: this.params.behavior,
         dictionary: this.params.dictionary,
-        globals: this.params.globals
+        globals: this.params.globals,
       },
       {
         onEnded: () => {
           this.navigationBar.disableButton('forward-step');
           this.navigationBar.toggleButtonState('autoplay', false);
           this.navigationBar.disableButton('autoplay');
-        }
-      }
+        },
+      },
     );
   }
 
@@ -60,14 +60,14 @@ export default class Main {
           {
             id: 'step',
             label: this.params.dictionary.get('a11y.stepButtonLabel'),
-          }
+          },
         ],
         a11y: {
-          disabled: this.params.dictionary.get('a11y.stepButtonDisabled')
+          disabled: this.params.dictionary.get('a11y.stepButtonDisabled'),
         },
         onClick: () => {
           this.chatPanels.step();
-        }
+        },
       },
       {
         id: 'autoplay',
@@ -76,11 +76,11 @@ export default class Main {
         a11y: {
           active: this.params.dictionary.get('a11y.autoplayButtonActive'),
           inactive: this.params.dictionary.get('a11y.autoplayButtonInactive'),
-          disabled: this.params.dictionary.get('a11y.autoplayButtonDisabled')
+          disabled: this.params.dictionary.get('a11y.autoplayButtonDisabled'),
         },
         onClick: () => {
           this.toggleAutoplay();
-        }
+        },
       },
       {
         id: 'reset',
@@ -89,18 +89,18 @@ export default class Main {
           {
             id: 'reset',
             label: this.params.dictionary.get('a11y.resetButtonLabel'),
-          }
+          },
         ],
         onClick: () => {
           this.reset();
-        }
-      }
+        },
+      },
     ];
 
     this.navigationBar = new NavigationBar({
       buttons: navigationBarButtons,
       dictionary: this.params.dictionary,
-      hide: !this.params.behavior.showPlayerBar
+      hide: !this.params.behavior.showPlayerBar,
     });
   }
 

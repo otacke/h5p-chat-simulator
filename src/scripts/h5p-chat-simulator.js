@@ -50,8 +50,8 @@ export default class ChatSimulator extends H5P.EventDispatcher {
         messages: this.params.messages,
         behavior: this.params.behaviour,
         dictionary: this.dictionary,
-        globals: this.globals
-      }
+        globals: this.globals,
+      },
     );
   }
 
