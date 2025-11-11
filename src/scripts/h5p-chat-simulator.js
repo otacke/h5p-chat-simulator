@@ -2,7 +2,6 @@ import MessageBox from '@components/message-box/message-box.js';
 import Main from '@components/main.js';
 import { getDefaultContrastColor } from '@services/color-util.js';
 import Dictionary from '@services/dictionary.js';
-import Globals from '@services/globals.js';
 import { getSemanticsDefaults } from '@services/h5p-util.js';
 import Screenreader from '@services/screenreader.js';
 import Util from '@services/util.js';
@@ -36,7 +35,7 @@ export default class ChatSimulator extends H5P.EventDispatcher {
     this.dictionary = new Dictionary();
     this.dictionary.fill({ l10n: this.params.l10n, a11y: this.params.a11y });
 
-    this.globals = new Globals();
+    this.globals = new Map();
     this.globals.set('contentId', this.contentId);
     this.globals.set('resize', () => {
       this.trigger('resize');
